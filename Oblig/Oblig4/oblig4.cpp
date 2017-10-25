@@ -119,11 +119,11 @@ void Tid :: skrivTidspunkt()       //  På formen:  tt:mm:ss
     if(time < 10){
     cout << "0";
     }
-    cout >> time >> ":";
+    cout << time << ":";
     if(minutt < 10){
       cout << "0";
     }
-    cout >> minutt >> ":";
+    cout << minutt << ":";
     if(sekund < 10){
       cout <<"0";
     }
