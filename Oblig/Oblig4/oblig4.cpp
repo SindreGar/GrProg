@@ -165,13 +165,30 @@ void Tid :: lesTid()               //  Leser inn ny dato og nytt tidspunkt:
   }
 
 bool Tid :: likDato(const Tid t)   //  Er to datoer like eller ei:
-  {   /*  Lag innmaten  */   }
+  {
+    if(t.aar != aar){
+      return false;
+    }
+    if(t.maaned != maaned){
+      return false;
+    }
+    if(t.dag != dag){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
 
 Tid Tid :: tidspunktForskjell(const Tid tt)  // Forskjellen mellom to tidspkt:
-{   /*  Lag innmaten  */   }
+{
+
+}
                                    
 int Tid :: datoForskjell(const Tid tt)      //  Antall dager mellom to datoer:
-  {   /*  Lag innmaten  */   }
+  {
+    
+  }
 
 
 
