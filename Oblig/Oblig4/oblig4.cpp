@@ -211,7 +211,7 @@ int Tid :: datoForskjell(const Tid tt)      //  Antall dager mellom to datoer:
     dagertotalt = 0;
 
     dagerTid1 = dagnummer(dag, maaned, aar);
-    dagerTid2 = dagnummer(tt.dag. tt.maaned, tt.aar);
+    dagerTid2 = dagnummer(tt.dag, tt.maaned, tt.aar);
 
     if(aar == tt.aar){
       if(dagerTid1 < dagerTid2){
