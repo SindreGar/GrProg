@@ -92,7 +92,7 @@ int main()  {
         if(tid1.likDato(tid2) == true){
           tid3 = tid1.tidspunktForskjell(tid2);
           cout << "Forskjellen mellom tid 1 og tid 2 er ";
-          tid3.skrivTid();
+          tid3.skrivTidspunkt();
 
         }else{
           cout << "Tid 1 og tid 2 er ikkje på same dato"; 
@@ -240,7 +240,7 @@ Tid Tid :: tidspunktForskjell(const Tid tt)  // Forskjellen mellom to tidspkt:
    tempsek = (nysek - tempsek);
    tempsek = (tempsek - tempsek%60);
    nyminutt = tempsek/60;
-   nysek = nysek - nytime * 3600 + nyminutt * 60;
+   nysek = nysek - nytime * 3600 - nyminutt * 60;
 
    return Tid(nytime, nyminutt, nysek);
 
