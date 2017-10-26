@@ -53,8 +53,9 @@ int main()  {
   while (valg != 'Q'  &&  valg != 'A')  {  //  Så lenge ikke avslutte:
     switch (valg)  {
       case 'S':
-        tid1.lesTid();
-        tid2.lesTid();
+        tid1.skrivTid();
+        cout << "   ";
+        tid2.skrivTid();
         break;
   
       case 'D':
@@ -170,7 +171,7 @@ void Tid :: skrivTid()             //  På formen:  dd/mm-aaaa   tt:mm:ss
 void Tid :: lesDato()              //  Leser inn ny dato:
   {
     skrivDato();
-    cout << "Skriv inn årstall: "; aar = les(1600, 2100);
+    cout << "\nSkriv inn årstall: "; aar = les(1600, 2100);
     cout << "Skriv inn måned: "; maaned = les(1, 12);
     cout << "Skriv inn dag: "; dag = les(1, 31);
     while(dagnummer(dag, maaned, aar) == 0){
@@ -181,7 +182,7 @@ void Tid :: lesDato()              //  Leser inn ny dato:
 void Tid :: lesTidspunkt()         //  Leser inn nytt tidspunkt:
   {
     skrivTidspunkt();
-    cout << "Skriv inn time: "; time = les(0, 23);
+    cout << "\nSkriv inn time: "; time = les(0, 23);
     cout << "Skriv inn minutt: "; minutt =  les(0, 59);
     cout << "Skriv inn sekund: "; sekund = les(0, 59);
   }
