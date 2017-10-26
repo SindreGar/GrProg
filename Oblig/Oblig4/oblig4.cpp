@@ -52,15 +52,44 @@ int main()  {
 
   while (valg != 'Q'  &&  valg != 'A')  {  //  Så lenge ikke avslutte:
     switch (valg)  {
-      case 'S':    /*  Lag innmaten   */   break;
+      case 'S':
+        tid1.lesTid();
+        tid2.lesTid();
+        break;
   
-      case 'D':    /*  Lag innmaten   */   break;
+      case 'D':
+        cout << "Vil du endre dato på tid 1 eller tid 2?"; nr = les(1,2);
+        if(nr == 1){
+          tid1.lesDato();
+        }
+        if(nr == 2){
+          tid2.lesDato();
+        }
+        break;
 
-      case 'P':    /*  Lag innmaten   */   break;
+      case 'P':
+        cout << "Vil du endre tidspunkt på tid 1 eller 2?"; nr = les(1,2);
+        if(nr == 1){
+          tid1.lesTidspunkt();
+        }
+        if(nr == 2){
+          tid2.lesTidspunkt();
+        }
+        break;
 
-      case 'T':    /*  Lag innmaten   */   break;
+      case 'T':
+        cout << "Vil du endre dato og tidspunkt på tid1 eller 2?"; nr = les(1,2);
+        if(nr == 1){
+          tid1.lesTid();
+        }
+        if(nr == 2){
+          tid2.lesTid();
+        }
+        break;
 
-      case 'X':    /*  Lag innmaten   */   break;
+      case 'X':
+        
+        break;
 
       case 'Y':    /*  Lag innmaten   */   break;
 
