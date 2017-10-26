@@ -181,9 +181,10 @@ bool Tid :: likDato(const Tid t)   //  Er to datoer like eller ei:
   }
 
 Tid Tid :: tidspunktForskjell(const Tid tt)  // Forskjellen mellom to tidspkt:
-{
+  {
+    
 
-}
+  }
                                    
 int Tid :: datoForskjell(const Tid tt)      //  Antall dager mellom to datoer:
   {
