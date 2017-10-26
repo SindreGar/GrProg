@@ -89,7 +89,13 @@ int main()  {
         break;
 
       case 'X':
-        
+        if(tid1.likDato(tid2) == true){
+          tid3 = tid1.tidspunktForskjell(tid2);
+          cout << "Forskjellen mellom tid 1 og tid 2 er " << skrivTid(tid3);
+
+        }else{
+          cout << "Tid 1 og tid 2 er ikkje på same dato"; 
+        }
         break;
 
       case 'Y':    /*  Lag innmaten   */   break;
