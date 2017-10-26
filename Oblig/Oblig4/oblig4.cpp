@@ -182,14 +182,66 @@ bool Tid :: likDato(const Tid t)   //  Er to datoer like eller ei:
 
 Tid Tid :: tidspunktForskjell(const Tid tt)  // Forskjellen mellom to tidspkt:
   {
-    
+   int sekund1, sekund2, nysek, nyminutt, nytime, tempsek;
+
+   sekund1 = tt.time * 3600 + tt.minutt * 60 + tt.sekund;
+   sekund2 = time * 3600 + minutt * 60 + sekund;
+
+   if(sekund2 > sekund1){
+    tempsek = sekund1;
+    sekund1 = sekund2;
+    sekund2 = tempsek;
+   }
+
+   nysek = sekund1 - sekund2;
+   tempsek = (nysek - nysek%3600);
+   nytime = tempsek/3600;
+   tempsek = (nysek - tempsek);
+   tempsek = (tempsek - tempsek%60);
+   nyminutt = tempsek/60;
+   nysek = nysek - nytime * 3600 + nytime * 60;
+
+   return Tid(nytime, nyminutt, nysek);
 
   }
                                    
 int Tid :: datoForskjell(const Tid tt)      //  Antall dager mellom to datoer:
   {
-    
+    int dagerTid1, dagerTid2, dagerTemp, dagertotalt;
+    dagertotalt = 0;
+
+    dagerTid1 = dagnummer(dag, maaned, aar);
+    dagerTid2 = dagnummer(tt.dag. tt.maaned, tt.aar);
+
+    if(aar == tt.aar){
+      if(dagerTid1 < dagerTid2){
+        dagerTemp = dagerTid1;
+        dagerTid1 = dagerTid2;
+        dagerTid2 = dagerTemp;
+      }
+      dagertotalt = dagerTid1 - dagerTid2;
+      return dagertotalt; 
+    }
+
+    if(aar > tt.aar){
+      for(int i = 1; tt.aar + i < aar; i++){
+        dagerTemp = dagnummer(tt.aar + i, 12, 31);
+        dagertotalt = dagertotalt + dagerTemp;
+      }
+    }
+
+    if(aar < tt.aar){
+      for(int i = 1; aar + i < tt.aar; i++){
+        dagerTemp = dagnummer(aar + i, 12, 31);
+        dagertotalt = dagertotalt + dagerTemp;
+      }
+    }
+
+    dagertotalt = dagerTid1 + dagertotalt - dagerTid2;
+    return dagertotalt;
+
   }
+    
 
 
 
