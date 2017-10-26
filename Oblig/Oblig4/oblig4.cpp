@@ -240,7 +240,7 @@ Tid Tid :: tidspunktForskjell(const Tid tt)  // Forskjellen mellom to tidspkt:
    tempsek = (nysek - tempsek);
    tempsek = (tempsek - tempsek%60);
    nyminutt = tempsek/60;
-   nysek = nysek - nytime * 3600 + nytime * 60;
+   nysek = nysek - nytime * 3600 + nyminutt * 60;
 
    return Tid(nytime, nyminutt, nysek);
 
