@@ -53,46 +53,51 @@ int main()  {
   while (valg != 'Q'  &&  valg != 'A')  {  //  Så lenge ikke avslutte:
     switch (valg)  {
       case 'S':
-        tid1.skrivTid();
+        tid1.skrivTid();  //kaller skrivTid for tid1
         cout << "   ";
-        tid2.skrivTid();
+        tid2.skrivTid(); // kaller skrivTid for tid2
         break;
   
       case 'D':
-        cout << "Vil du endre dato på tid 1 eller tid 2?"; nr = les(1,2);
+        cout << "Vil du endre dato på tid 1 eller tid 2? "; nr = les(1,2); 
+        //bruker les til å sjekke gyldig input
         if(nr == 1){
-          tid1.lesDato();
+          tid1.lesDato(); // om nr=1, så kalles lesDato for tid1
         }
         if(nr == 2){
-          tid2.lesDato();
+          tid2.lesDato(); // om nr=2, så kalles lesDato for tid2
         }
         break;
 
       case 'P':
-        cout << "Vil du endre tidspunkt på tid 1 eller 2?"; nr = les(1,2);
+        cout << "Vil du endre tidspunkt på tid 1 eller 2? "; nr = les(1,2);
+        //bruker les til å sjekke gyldig input
         if(nr == 1){
-          tid1.lesTidspunkt();
+          tid1.lesTidspunkt(); // om nr=1 så kalles lesTidspunkt for tid1
         }
         if(nr == 2){
-          tid2.lesTidspunkt();
+          tid2.lesTidspunkt(); // om nr=2 så kalles lesTidspunkt for tid2
         }
         break;
 
       case 'T':
-        cout << "Vil du endre dato og tidspunkt på tid1 eller 2?"; nr = les(1,2);
+        cout << "Vil du endre dato og tidspunkt på tid 1 eller 2? "; nr = les(1,2);
+        //bruker les til å sjekke gyldig input
         if(nr == 1){
-          tid1.lesTid();
+          tid1.lesTid(); // om nr=1 så kalles lesTid for tid1
         }
         if(nr == 2){
-          tid2.lesTid();
+          tid2.lesTid(); // om nr=2 så kalles lesTid for tid2
         }
         break;
 
       case 'X':
-        if(tid1.likDato(tid2) == true){
-          tid3 = tid1.tidspunktForskjell(tid2);
-          cout << "Forskjellen mellom tid 1 og tid 2 er ";
-          tid3.skrivTidspunkt();
+        if(tid1.likDato(tid2) == true){ // Bruker likDato til å sjekke om 
+          //tid 1 og 2 er like, om det er tilfellet så blir resultatet av
+          tid3 = tid1.tidspunktForskjell(tid2); //tidspunktForskjell lagra
+          cout << "Forskjellen mellom tid 1 og tid 2 er "; //i tid3.
+          tid3.skrivTidspunkt(); //Bruker så skrivTidspunkt til å sjå 
+          //resultatet
 
         }else{
           cout << "Tid 1 og tid 2 er ikkje på same dato"; 
@@ -100,8 +105,9 @@ int main()  {
         break;
 
       case 'Y':
-        int antalldager; 
-        antalldager = tid1.datoForskjell(tid2);
+        int antalldager; // Int for å lagre antall dager
+        antalldager = tid1.datoForskjell(tid2); //forskjellen mellom tid1 og
+        // tid to blir lagra i antalldager
         cout << "Det er " << antalldager << " dager imellom tid1 og tid 2";
         break;
 
@@ -147,26 +153,40 @@ int Tid :: dagnummer(int da, int ma, int aa)  {
 
 
 Tid :: Tid()                       //  2x constructorer, som setter verdier:
-  {dag = 1; maaned = 1; aar = 2000; time = 0; minutt = 0; sekund = 0;   }
+  {
+    dag = 1; 
+    maaned = 1; 
+    aar = 2000; 
+    time = 0; 
+    minutt = 0; 
+    sekund = 0;   
+  }
 
 Tid :: Tid(int tt, int mm, int ss)
-  {   dag = 1; maaned = 1; aar = 2000; time = tt, minutt = mm, sekund = ss;   }
+  {   
+    dag = 1; 
+    maaned = 1;
+    aar = 2000; 
+    time = tt, 
+    minutt = mm, 
+    sekund = ss;   
+  }
 
 void Tid :: skrivDato()            //  På formen:  dd/mm-aaaa
   {cout << dag << "/" << maaned << "-" << aar;}
 
 void Tid :: skrivTidspunkt()       //  På formen:  tt:mm:ss
   {
-    if(time < 10){
-    cout << "0";
+    if(time < 10){ // sjekker om det er under 10 timer, om det er tilfellet
+    cout << "0"; // så blir det printa ein ekstra 0 framfor 
     }
     cout << time << ":";
-    if(minutt < 10){
-      cout << "0";
+    if(minutt < 10){ // sjekker om det er under 10 minutt, om det er det
+      cout << "0"; // så blir det printa ein ekstra 0 framfor
     }
     cout << minutt << ":";
-    if(sekund < 10){
-      cout <<"0";
+    if(sekund < 10){ // sjekker om det er under 10 sekund, om det er det
+      cout <<"0"; // så blir det printa ein ekstra 0 framfor
     }
     cout << sekund;
 
@@ -174,18 +194,22 @@ void Tid :: skrivTidspunkt()       //  På formen:  tt:mm:ss
 
 void Tid :: skrivTid()             //  På formen:  dd/mm-aaaa   tt:mm:ss
   {
-    skrivDato();
+    skrivDato(); // Kaller funksjonen skrivDato
     cout << "   ";
-    skrivTidspunkt();
+    skrivTidspunkt(); // Kaller funksjonen skrivTidspunkt
   }
 
 void Tid :: lesDato()              //  Leser inn ny dato:
   {
     skrivDato();
-    cout << "\nSkriv inn årstall: "; aar = les(1600, 2100);
-    cout << "Skriv inn måned: "; maaned = les(1, 12);
-    cout << "Skriv inn dag: "; dag = les(1, 31);
-    while(dagnummer(dag, maaned, aar) == 0){
+    cout << "\nSkriv inn årstall: "; aar = les(1600, 2100); // bruker les
+    // til å sjekke at aar blir gyldig
+    cout << "Skriv inn måned: "; maaned = les(1, 12); // bruker les til å
+    // sjekke at maaned blir gyldig
+    cout << "Skriv inn dag: "; dag = les(1, 31); // bruker les til å sjekke
+    // at dag blir gyldig
+    while(dagnummer(dag, maaned, aar) == 0){ // sjekker om dagnummer returnerer
+      // 0, gjer den det blir brukaren bedt om å skrive inn ny dag
       cout << "Ugyldig dag, skriv inn på nytt: "; dag = les(1, 31);
     }
   }
@@ -193,9 +217,12 @@ void Tid :: lesDato()              //  Leser inn ny dato:
 void Tid :: lesTidspunkt()         //  Leser inn nytt tidspunkt:
   {
     skrivTidspunkt();
-    cout << "\nSkriv inn time: "; time = les(0, 23);
-    cout << "Skriv inn minutt: "; minutt =  les(0, 59);
-    cout << "Skriv inn sekund: "; sekund = les(0, 59);
+    cout << "\nSkriv inn time: "; time = les(0, 23); // bruker les til å sjekke
+    // om time er gyldig
+    cout << "Skriv inn minutt: "; minutt =  les(0, 59); //bruker les til å
+    //sjekke om minutt er gyldig
+    cout << "Skriv inn sekund: "; sekund = les(0, 59); // bruker les til å
+    //sjekke om sekund er gyldig
   }
 
 void Tid :: lesTid()               //  Leser inn ny dato og nytt tidspunkt:
@@ -206,6 +233,8 @@ void Tid :: lesTid()               //  Leser inn ny dato og nytt tidspunkt:
   }
 
 bool Tid :: likDato(const Tid t)   //  Er to datoer like eller ei:
+//sjekker om aar, maaned og dag er like. Returnerer true om alle er like
+//false om de ikke er det. 
   {
     if(t.aar != aar){
       return false;
@@ -223,57 +252,63 @@ bool Tid :: likDato(const Tid t)   //  Er to datoer like eller ei:
 
 Tid Tid :: tidspunktForskjell(const Tid tt)  // Forskjellen mellom to tidspkt:
   {
-   int sekund1, sekund2, nysek, nyminutt, nytime, tempsek;
+   int sekund1, sekund2, nysek, nyminutt, nytime, tempsek; //variabler som blir
+   //brukt til å holde styr på sekunder
 
    sekund1 = tt.time * 3600 + tt.minutt * 60 + tt.sekund;
+   //antall sekunder i tt
    sekund2 = time * 3600 + minutt * 60 + sekund;
+   //antall sekunder i tiden der funksjonen kalles
 
-   if(sekund2 > sekund1){
-    tempsek = sekund1;
+   if(sekund2 > sekund1){ //gjer att sekund1 og sekund2 bytter plass om
+    tempsek = sekund1; //sekund2 er større enn sekund1
     sekund1 = sekund2;
     sekund2 = tempsek;
    }
 
-   nysek = sekund1 - sekund2;
-   tempsek = (nysek - nysek%3600);
-   nytime = tempsek/3600;
-   tempsek = (nysek - tempsek);
-   tempsek = (tempsek - tempsek%60);
-   nyminutt = tempsek/60;
-   nysek = nysek - nytime * 3600 - nyminutt * 60;
+   nysek = sekund1 - sekund2; //regner ut differansen i sekund
+   tempsek = (nysek - nysek%3600); //finner ut kor mange heile timer det er
+   nytime = tempsek/3600; //gjer sekunda om til timer
+   tempsek = (nysek - tempsek); //finn ut kor mange resterande sekund det er
+   tempsek = (tempsek - tempsek%60); // finn ut kor mange minutt det er
+   nyminutt = tempsek/60; // Gjer sekunda om til minutt
+   nysek = nysek - nytime * 3600 - nyminutt * 60; //Finn ut dei resterande sekunda
 
-   return Tid(nytime, nyminutt, nysek);
+   return Tid(nytime, nyminutt, nysek); //returnerar tidsobjekt
 
   }
                                    
 int Tid :: datoForskjell(const Tid tt)      //  Antall dager mellom to datoer:
   {
-    int dagerTid1, dagerTid2, dagerTemp, dagertotalt;
-    dagertotalt = 0;
+    int dagerTid1, dagerTid2, dagerTemp, dagertotalt; //variablar for å lagre
+    //dagar
+    dagertotalt = 0; //set forkjsellen til 0
 
-    dagerTid1 = dagnummer(dag, maaned, aar);
-    dagerTid2 = dagnummer(tt.dag, tt.maaned, tt.aar);
+    dagerTid1 = dagnummer(dag, maaned, aar); //finn ut kor manger dagar det er
+    // i tid
+    dagerTid2 = dagnummer(tt.dag, tt.maaned, tt.aar); //finn ut kor mange dagar
+    // Det er i tt
 
-    if(aar == tt.aar){
-      if(dagerTid1 < dagerTid2){
-        dagerTemp = dagerTid1;
-        dagerTid1 = dagerTid2;
+    if(aar == tt.aar){ // Om årstalla er like finn vi berre ut forskjellen
+      if(dagerTid1 < dagerTid2){ // ved å ta differansen
+        dagerTemp = dagerTid1; // bytter plass på dagerTid1 og dagerTid2 om
+        dagerTid1 = dagerTid2; // nødvendig
         dagerTid2 = dagerTemp;
       }
       dagertotalt = dagerTid1 - dagerTid2;
       return dagertotalt; 
     }
 
-    if(aar > tt.aar){
-      for(int i = 0; tt.aar + i < aar; i++){
-        dagerTemp = dagnummer(31, 12, tt.aar +i);
-        dagertotalt = dagertotalt + dagerTemp;
+    if(aar > tt.aar){ // om aar er større enn tt.aar gjer vi det slik
+      for(int i = 0; tt.aar + i < aar; i++){ // tt.aar itirerar mot aar
+        dagerTemp = dagnummer(31, 12, tt.aar +i); // og dagnummer finn ut kor
+        dagertotalt = dagertotalt + dagerTemp; // mange dagar det er i kvar år
       }
-      dagertotalt = dagerTid1 + dagertotalt - dagerTid2;
-      return dagertotalt;
+      dagertotalt = dagerTid1 + dagertotalt - dagerTid2; //siste regnestykke for
+      return dagertotalt; // å finne totalen, som blir returnert
     }
 
-    if(aar < tt.aar){
+    if(aar < tt.aar){ //same prosessen her, berre at aar itererar mot tt.aar
       for(int i = 0; aar + i < tt.aar; i++){
         dagerTemp = dagnummer(31, 12, aar +i);
         dagertotalt = dagertotalt + dagerTemp;
