@@ -252,9 +252,7 @@ int Tid :: datoForskjell(const Tid tt)      //  Antall dager mellom to datoer:
     dagertotalt = 0;
 
     dagerTid1 = dagnummer(dag, maaned, aar);
-    cout << dagerTid1;
     dagerTid2 = dagnummer(tt.dag, tt.maaned, tt.aar);
-    cout << dagerTid2;
 
     if(aar == tt.aar){
       if(dagerTid1 < dagerTid2){
@@ -271,6 +269,8 @@ int Tid :: datoForskjell(const Tid tt)      //  Antall dager mellom to datoer:
         dagerTemp = dagnummer(31, 12, tt.aar +i);
         dagertotalt = dagertotalt + dagerTemp;
       }
+      dagertotalt = dagerTid1 + dagertotalt - dagerTid2;
+      return dagertotalt;
     }
 
     if(aar < tt.aar){
@@ -278,10 +278,11 @@ int Tid :: datoForskjell(const Tid tt)      //  Antall dager mellom to datoer:
         dagerTemp = dagnummer(31, 12, aar +i);
         dagertotalt = dagertotalt + dagerTemp;
       }
+      dagertotalt = dagerTid2 + dagertotalt - dagerTid1;
+      return dagertotalt;
     }
 
-    dagertotalt = dagerTid2 + dagertotalt - dagerTid1;
-    return dagertotalt;
+    
 
   }
     
