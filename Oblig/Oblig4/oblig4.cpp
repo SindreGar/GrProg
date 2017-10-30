@@ -1,9 +1,6 @@
-//  Fil:  FRODEH \ CPP \ OBIGER \ OBLIG_4.TPL
-//
-//  Skjellettet/template for obligatorisk oppgave nr.4 i  C++ -programmering.
-//  Omhandler/"dekker" kap.2-6 i læreboka.
-
-
+//Sindre Garmo
+//BITSEC
+//Studentnr 757694
                              //  INCLUDE:
 #include <iostream>          //  cout, cin
 #include <cctype>            //  toupper
